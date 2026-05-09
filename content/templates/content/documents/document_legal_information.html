@@ -1,0 +1,106 @@
+<!-- document_personal_data.html -->
+
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Реквизиты{% endblock %}
+
+
+{% block main %}
+    <div class="relative w-full">
+
+        <!-- ВЕРХНЯЯ ТЕМНАЯ СЕКЦИЯ (Заголовок) -->
+        <section class="relative z-10 pt-[120px] pb-16 lg:pt-[180px] lg:pb-24 bg-zinc-800 text-zinc-50 overflow-hidden">
+            <div class="container mx-auto px-4 max-w-screen-xl w-full relative z-10">
+
+                <div class="max-w-3xl reveal-fade">
+                    <h1 class="text-4xl lg:text-5xl font-light uppercase tracking-tight leading-tight mb-6">
+                        Реквизиты <br class="hidden lg:block"> индивидуального предпринимателя
+                    </h1>
+                    <p class="text-zinc-400 font-light tracking-widest uppercase text-[10px]">
+                        ИП Мосийчук Олеся Сергеевна
+                    </p>
+                    <div class="h-px w-20 bg-pink-800 mt-8"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- НИЖНЯЯ СВЕТЛАЯ СЕКЦИЯ (Таблица реквизитов) -->
+        <section class="relative z-10 py-16 lg:py-24 bg-zinc-50 text-zinc-800">
+            <div class="container mx-auto px-4 max-w-screen-xl w-full">
+
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full px-4 lg:w-full">
+                        <div class="max-w-4xl font-extralight reveal-fade">
+
+                            <!-- Блок основных данных -->
+                            <div class="space-y-1">
+                                <!-- Строка реквизита -->
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">Наименование</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-900 font-normal">ИП Мосийчук Олеся Сергеевна</div>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">ИНН</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-900 tracking-wider font-normal">780252119106</div>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">ОГРНИП</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-900 tracking-wider font-normal">324784700344481</div>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">Адрес</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-600 leading-relaxed">194354, РОССИЯ, Г. САНКТ-ПЕТЕРБУРГ</div>
+                                </div>
+
+                                <!-- Банковские реквизиты (выделены легким фоном) -->
+                                <div class="mt-12 mb-6 text-zinc-900 font-normal uppercase text-xs tracking-[0.2em]">Банковские реквизиты</div>
+
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200 bg-zinc-100/50 px-4 -mx-4">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">Расчетный счет</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-900 tracking-wider">40802810800006764516</div>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">Банк</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-600">АО «ТИНЬКОФФ БАНК»</div>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">БИК</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-900 tracking-wider">044525974</div>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row py-6 border-b border-zinc-200">
+                                    <div class="w-full sm:w-1/3 text-zinc-400 uppercase text-[10px] tracking-widest mb-2 sm:mb-0">Корр. счет</div>
+                                    <div class="w-full sm:w-2/3 text-zinc-900 tracking-wider">30101810145250000974</div>
+                                </div>
+                            </div>
+
+                            <!-- Кнопка контактов (опционально) -->
+                            <div class="mt-16">
+                                <p class="text-sm text-zinc-400 mb-6 italic">По вопросам сотрудничества и документооборота:</p>
+                                <a href="mailto:jazz-event@gmail.com" class="inline-flex items-center text-pink-800 hover:text-zinc-900 transition-colors duration-300">
+                                    <span class="border-b border-pink-800/30 pb-1">jazz-event@gmail.com</span>
+                                    <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

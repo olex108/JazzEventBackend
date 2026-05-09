@@ -1,0 +1,22 @@
+<!-- video_vk.html -->
+
+{% load django_vite %}
+{% load static %}
+
+<div class="relative aspect-video bg-zinc-800 overflow-hidden group/video video-container reveal-fade"
+     data-vk-url="{{ video.get_embed_url }}"> <!-- Ссылка формируется в модели -->
+
+    <!-- Превью видео (вместо тега video) -->
+    <img src="{% if video.preview %}{{ video.preview.url }}{% else %}{% static 'image/preview/video_previews/base.png' %}{% endif %}" class="heroVideo w-full h-full object-cover cursor-pointer transition-transform duration-500 group-hover/video:scale-105">
+
+    <!-- Твоя кнопка Play -->
+    <button class="playBtn absolute inset-0 m-auto w-16 h-16 flex items-center justify-center bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white transition-all duration-300 hover:scale-110 hover:bg-white hover:text-black z-30">
+        <i class="fa-solid fa-play text-xl ml-1"></i>
+    </button>
+
+    <!-- Оверлей -->
+    <div class="videoOverlay absolute inset-0 bg-black/30 pointer-events-none transition-opacity duration-500"></div>
+
+    <!-- Контейнер для динамического iframe -->
+    <div class="iframe-target absolute inset-0 w-full h-full hidden"></div>
+</div>

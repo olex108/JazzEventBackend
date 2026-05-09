@@ -1,0 +1,43 @@
+{% load thumbnail %} <!-- Добавьте это в начало файла -->
+{% load static %}
+
+{% load django_vite %}
+{% vite_asset 'src/photo_slider.js' %}
+
+<div class="container mx-auto max-w-screen-xl relative">
+    <div class="swiper photoSwiper !overflow-hidden">
+        <div class="swiper-wrapper !overflow-visible py-10">
+            {% for photo in photo_list %}
+                <div class="swiper-slide aspect-square group cursor-pointer z-10 hover:z-[70] transition-all duration-300 reveal">
+                    {% thumbnail photo.image "500x500" crop="center" quality=85 as im %}
+                        <img src="{{ im.url }}"
+                             alt="Photo"
+                             loading="lazy"
+                             onclick="openLightbox('{{ photo.image.url }}')"
+                             class="w-full h-full object-cover transition-transform duration-300 ease-out will-change-transform transform-gpu group-hover:scale-[1.6] border-none">
+                    {% empty %}
+                        <div class="w-full h-full bg-zinc-700 flex items-center justify-center">
+                            <span class="text-zinc-500 text-[8px]">Ошибка</span>
+                        </div>
+                    {% endthumbnail %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Кнопки навигации -->
+    <div class="flex mx-auto justify-between pt-6 pb-12 items-center px-8 max-w-screen-xl">
+        <button class="photo-prev group relative flex items-center text-zinc-50 transition-opacity hover:opacity-80">
+            <svg width="60" height="12" viewBox="0 0 60 12" fill="none" class="overflow-visible"><path d="M6 1L1 6L6 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="2" y1="6" x2="30" y2="6" stroke="currentColor" stroke-width="1.5" class="transition-transform duration-300 ease-in-out origin-left group-hover:scale-x-[1.5]" /></svg>
+        </button>
+        <button class="photo-next group relative flex items-center text-zinc-50 transition-opacity hover:opacity-80">
+            <svg width="60" height="12" viewBox="0 0 60 12" fill="none" class="overflow-visible"><line x1="30" y1="6" x2="58" y2="6" stroke="currentColor" stroke-width="1.5" class="transition-transform duration-300 ease-in-out origin-right group-hover:scale-x-[1.5]" /><path d="M54 1L59 6L54 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+    </div>
+</div>
+
+
+<!-- Простейший Lightbox для клика (разворот на весь экран) -->
+<div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/95 flex items-center justify-center p-4 cursor-zoom-out" onclick="this.classList.add('hidden')">
+    <img id="lightboxImg" src="" class="max-w-full max-h-full object-contain shadow-2xl transition-transform duration-500">
+</div>

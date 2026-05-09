@@ -1,0 +1,115 @@
+<!-- /steps_section.html -->
+
+{% load django_vite %}
+{% vite_asset 'src/steps_section.js' %}
+
+<!-- СЕКЦИЯ СЕРВИСОВ -->
+<div id="steps-section" class="bg-zinc-50 pt-24 pb-12 overflow-hidden selection:bg-none reveal-fade">
+    <div class="mx-auto max-w-screen-2xl">
+        <!-- Сетка услуг -->
+        <div id="scroll-container" class="flex flex-nowrap gap-2 overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing pb-2"
+             style="scroll-behavior: smooth; padding-left: max(1rem, calc((100% - 1536px) / 2 + 1rem)); padding-right: max(1rem, calc((100% - 1536px) / 2 + 1rem));">
+            <!-- Карточка сервиса (повторить для всех 4-х) -->
+            <div class="service-card group relative flex flex-col items-start flex-shrink-0 w-[90%] md:w-[45%] lg:w-[350px] snap-center transition-all duration-700 p-4">
+                <!-- ФОН -->
+                <div class="card-bg absolute inset-0 bg-zinc-50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+                <!-- Иконка -->
+                <div class="card-icon flex justify-center items-center w-12 h-12 mb-6 text-pink-800 border-b border-zinc-300 group-hover:border-pink-800 transition-colors duration-700">
+                   <i class="fas fa-paper-plane text-2xl font-light"></i>
+                </div>
+                <div class="w-full mb-4 flex items-center justify-between gap-2">
+                    <h3 class="card-title text-xl font-light text-zinc-600 group-hover:text-pink-800 transition-colors duration-500">
+                        Запрос
+                    </h3>
+                    <div class="relative flex items-center overflow-hidden h-8">
+                        <div class="card-arrow flex items-center text-zinc-400 group-hover:text-pink-800 transform transition-all duration-500 ease-out translate-x-[-20px] group-hover:translate-x-0">
+                            <span class="card-arrow-text text-[10px] font-medium uppercase tracking-widest mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 whitespace-nowrap">
+                                Дальше
+                            </span>
+                            <i class="fas fa-arrow-right text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ТЕКСТ: добавили класс card-text -->
+                <p class="card-text text-zinc-500 font-extralight leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    Направьте информацию о дате, времени выступления, территориальном нахождении площадки, желаемом составе музыкантов
+                </p>
+            </div>
+            <!-- Сервис 2 -->
+            <div class="service-card group relative flex flex-col items-start flex-shrink-0 w-[90%] md:w-[45%] lg:w-[350px] snap-center transition-all duration-700 p-4">
+                <!-- ФОН -->
+                <div class="card-bg absolute inset-0 bg-zinc-50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+                <!-- Иконка -->
+                <div class="card-icon flex justify-center items-center w-12 h-12 mb-6 text-pink-800 border-b border-zinc-300 group-hover:border-pink-800 transition-colors duration-700">
+                   <i class="fas fa-users-cog text-2xl font-light"></i>
+                </div>
+                <div class="w-full mb-4 flex items-center justify-between gap-4">
+                    <h3 class="card-title text-xl font-light text-zinc-600 group-hover:text-pink-800 transition-colors duration-500">
+                        Подбор состава
+                    </h3>
+                    <div class="relative flex items-center overflow-hidden h-8">
+                        <div class="card-arrow flex items-center text-zinc-400 group-hover:text-pink-800 transform transition-all duration-500 ease-out translate-x-[-20px] group-hover:translate-x-0">
+                            <span class="card-arrow-text text-[10px] font-medium uppercase tracking-widest mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 whitespace-nowrap">
+                                Далее
+                            </span>
+                            <i class="fas fa-arrow-right text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ТЕКСТ: добавили класс card-text -->
+                <p class="card-text text-zinc-500 font-extralight leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    Мы подберем музыкантов, учитывая все ваши пожелания, ответим на вопросы и порекомендуем со своей стороны оптимальный вариант
+                </p>
+            </div>
+            <!-- Сервис 3 -->
+            <div class="service-card group relative flex flex-col items-start flex-shrink-0 w-[90%] md:w-[45%] lg:w-[350px] snap-center transition-all duration-700 p-4">
+                <!-- ФОН -->
+                <div class="card-bg absolute inset-0 bg-zinc-50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+                <!-- Иконка -->
+                <div class="card-icon flex justify-center items-center w-12 h-12 mb-6 text-pink-800 border-b border-zinc-300 group-hover:border-pink-800 transition-colors duration-700">
+                   <i class="fas fa-calendar-check text-2xl font-light"></i>
+                </div>
+                <div class="w-full mb-4 flex items-center justify-between gap-3">
+                    <h3 class="tracking-tighter card-title text-xl font-light text-zinc-600 group-hover:text-pink-800 transition-colors duration-500">
+                        Бронирование
+                    </h3>
+                    <div class="relative flex items-center overflow-hidden h-8">
+                        <div class="card-arrow flex items-center text-zinc-400 group-hover:text-pink-800 transform transition-all duration-500 ease-out translate-x-[-20px] group-hover:translate-x-0">
+                            <span class="card-arrow-text text-[10px] font-medium uppercase tracking-widest mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 whitespace-nowrap">
+                                Далее
+                            </span>
+                            <i class="fas fa-arrow-right text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ТЕКСТ: добавили класс card-text -->
+                <p class="card-text text-zinc-500 font-extralight leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    Вы оплачиваете 50% от суммы договора (при работе через юр.лицо стоимость увеличивается на 10%). После внесения предоплаты закрепляется дата и коллектив. Обсуждается репертуар, технический и бытовой райдеры, дресс-код
+                </p>
+            </div>
+            <!-- Сервис 4 -->
+            <div class="service-card group relative flex flex-col items-start flex-shrink-0 w-[90%] md:w-[45%] lg:w-[350px] snap-center transition-all duration-700 p-4">
+                <!-- ФОН -->
+                <div class="card-bg absolute inset-0 bg-zinc-50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+                <!-- Иконка -->
+                <div class="card-icon flex justify-center items-center w-12 h-12 mb-6 text-pink-800 border-b border-zinc-300 group-hover:border-pink-800 transition-colors duration-700">
+                   <i class="fas fa-microphone-alt text-2xl font-light"></i>
+                </div>
+                <div class="w-full mb-4 flex items-center justify-between gap-4">
+                    <h3 class="card-title text-xl font-light text-zinc-600 group-hover:text-pink-800 transition-colors duration-500">
+                        Проведение мероприятия
+                    </h3>
+                </div>
+                <!-- ТЕКСТ: добавили класс card-text -->
+                <p class="card-text text-zinc-500 font-extralight leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    Администратор на площадке или на связи для решения любых организационных вопросов, следит за соблюдением тайминга и других договорённостей по проекту.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block scripts %}
+    {% load django_vite %}
+    {% vite_asset 'src/steps_section.js' %}
+{% endblock %}

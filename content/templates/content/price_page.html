@@ -1,0 +1,27 @@
+<!-- price_page.html -->
+
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Цены{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+    <!-- секция с ценами -->
+    {% include 'content/includes/price_section.html' %}
+    <!-- секция с шагами -->
+    {% include 'content/includes/steps_section.html' %}
+
+    {% include 'content/includes/price_contact_form.html' %}
+
+{% endblock %}
+
+{% block scripts %}
+
+    {% load django_vite %}
+    {% vite_asset 'src/price_page.js' %}
+
+{% endblock %}

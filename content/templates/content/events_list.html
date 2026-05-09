@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Мероприятия{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    {% include 'content/includes/filter_section.html' %}
+
+    {% for event in events_list %}
+        {% include 'content/includes/event_section.html' %}
+    {% endfor %}
+
+{% endblock %}

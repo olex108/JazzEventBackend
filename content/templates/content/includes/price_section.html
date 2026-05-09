@@ -1,0 +1,265 @@
+<!-- price_section.html -->
+
+<section class="bg-zinc-50 py-16 overflow-hidden" id="pricing">
+    <div class="container mx-auto max-w-screen-2xl">
+        <!-- Заголовок центрирован -->
+        <div class="mb-16 px-4 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-light tracking-tight text-zinc-800 lg:text-5xl">
+                    Базовые пакеты
+                </h2>
+            </div>
+            <div class="md:w-1/2 flex flex-col items-start md:items-end gap-6">
+                <p class="text-zinc-800 text-lg md:text-right font-extralight leading-relaxed">
+                    Доступно гибкое ценообразование индивидуально под Ваш запрос. Больше вариантов вы можете получить при персональном обращении
+                </p>
+                <a href="{% url 'content:contacts' %}" class="group inline-flex items-center px-8 py-3 text-sm font-medium rounded-full border bg-zinc-800 border-zinc-800/30 text-zinc-50 transition-all duration-300 hover:bg-pink-800 hover:text-zinc-50 active:scale-95 uppercase tracking-widest">
+                    Контакты
+                    <span class="js-scroll-arrow ml-2 inline-block">
+                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current">
+                            <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2813 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z"></path>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Секция выбора тарифа -->
+        <div class="swiper pricingSwiper pt-12 reveal">
+            <div class="swiper-wrapper items-stretch">
+                <!-- СТАНДАРТ -->
+                <div class="swiper-slide mt-10 h-auto flex justify-center">
+                    <div data-plan="standard"
+                         class="pricing-card relative flex flex-col h-full w-full max-w-[380px] py-10 border border-zinc-300 transition-all duration-500 opacity-60 hover:opacity-100 hover:border-zinc-600 hover:-translate-y-4 bg-white"
+                    >
+                        <div class="mb-12 px-4 ">
+                            <div class="absolute inset-x-0 -top-3  flex justify-center">
+                                <span class="badge-status flex h-6 items-center justify-center bg-zinc-300 px-4 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-800 transition-colors duration-500 group-hover:bg-zinc-600 group-hover:text-zinc-50">
+                                    Популярный
+                                </span>
+                            </div>
+                            <div class="mb-4 text-center text-3xl font-light uppercase tracking-tight text-zinc-800">Стандарт</div>
+                            <p class="mb-10 px-4 text-center text-gray-500 font-extralight text-sm leading-relaxed">Для небольших корпоративов и семейных праздников</p>
+
+                            <div class="space-y-4 px-4 text-sm font-extralight uppercase tracking-wider text-zinc-600">
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>профессиональные музыканты</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>общее время на площадке до 3 часов</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>локация: Санкт-Петербург</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>время на сцене: от 30мин до 1ч 30мин </span></div>
+                                <div class="flex items-center gap-3"><span></span></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto px-10 flex flex-col gap-8">
+                            <button onclick="selectMainPlan('standard', this)" class="btn-select group/btn inline-flex items-center justify-center px-8 py-4 text-[10px] font-medium rounded-full border border-zinc-400 text-zinc-400 transition-all duration-500 hover:border-zinc-800 hover:bg-zinc-600 hover:text-zinc-50 active:scale-95 uppercase tracking-[0.2em]">
+                                <span>Выбрать</span>
+                                <svg class="ml-2 transform transition-transform duration-300 group-hover/btn:translate-x-1" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2188 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- СТАНДАРТ+ -->
+                <div class="swiper-slide mt-10 h-auto flex justify-center">
+                    <div data-plan="standard+"
+                         class="pricing-card relative flex flex-col h-full w-full max-w-[380px] py-10 border border-zinc-300 transition-all duration-500 opacity-60 hover:opacity-100 hover:border-zinc-600 hover:-translate-y-4 bg-white"
+                    >
+                        <div class="mb-12 px-4">
+                            <div class="absolute inset-x-0 -top-3 flex justify-center">
+                                <span class="badge-status flex h-6 items-center justify-center bg-zinc-300 px-4 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-800 transition-colors duration-500 group-hover:bg-zinc-600 group-hover:text-zinc-50">
+                                    Расширенный
+                                </span>
+                            </div>
+                            <div class="mb-4 text-center text-3xl font-light uppercase tracking-tight text-zinc-800">Стандарт +</div>
+                            <p class="mb-10 px-4 text-center text-gray-500 font-extralight text-sm leading-relaxed">Для небольших корпоративов и семейных праздников</p>
+
+                            <div class="space-y-4 px-4 text-sm font-extralight uppercase tracking-wider text-zinc-600">
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>солисты филармонии</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>общее время на площадке до 5 часов</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>локация: Санкт-Петербург и Лен. обл.</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>время на сцене: от 30мин до 2ч</span></div>
+                                <div class="flex items-center gap-3"><span></span></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto px-10 flex flex-col gap-8">
+                            <button onclick="selectMainPlan('standard+', this)" class="btn-select group/btn inline-flex items-center justify-center px-8 py-4 text-[10px] font-medium rounded-full border border-zinc-400 text-zinc-400 transition-all duration-500 hover:border-zinc-800 hover:bg-zinc-600 hover:text-zinc-50 active:scale-95 uppercase tracking-[0.2em]">
+                                <span>Выбрать</span>
+                                <svg class="ml-2 transform transition-transform duration-300 group-hover/btn:translate-x-1" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2188 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ПРЕМИУМ -->
+                <div class="swiper-slide mt-10 h-auto flex justify-center">
+                    <div data-plan="premium"
+                         class="pricing-card relative flex flex-col h-full w-full max-w-[380px] py-10 border border-zinc-300 transition-all duration-500 opacity-60 hover:opacity-100 hover:border-zinc-600 hover:-translate-y-4 bg-white"
+                    >
+                        <div class="mb-12 px-4">
+                            <div class="absolute inset-x-0 -top-3 flex justify-center">
+                                <span class="badge-status flex h-6 items-center justify-center bg-zinc-300 px-4 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-800 transition-colors duration-500 group-hover:bg-zinc-600 group-hover:text-zinc-50">
+                                    Эксклюзивный
+                                </span>
+                            </div>
+                            <div class="mb-4 text-center text-3xl font-light uppercase tracking-tight text-zinc-800">Премиум</div>
+                            <p class="mb-10 px-4 text-center text-gray-500 font-extralight text-sm leading-relaxed">Для проведения мероприятия высокого уровня</p>
+
+                            <div class="space-y-4 px-4 text-sm font-extralight uppercase tracking-wider text-zinc-600">
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>известные музыканты</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>общее время на площадке до 5 часов</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>локация: Санкт-Петербург и Лен. обл.</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>время на сцене: от 30мин до 2ч</span></div>
+                                <div class="flex items-center gap-3"><i class="fas fa-check text-[10px]"></i><span>включены праздничные даты</span></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto px-10 flex flex-col gap-8">
+                            <button onclick="selectMainPlan('premium', this)" class="btn-select group/btn inline-flex items-center justify-center px-8 py-4 text-[10px] font-medium rounded-full border border-zinc-400 text-zinc-400 transition-all duration-500 hover:border-zinc-800 hover:bg-zinc-600 hover:text-zinc-50 active:scale-95 uppercase tracking-[0.2em]">
+                                <span>Выбрать</span>
+                                <svg class="ml-2 transform transition-transform duration-300 group-hover/btn:translate-x-1" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2188 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Твои кастомные стрелки (обязательно с новыми селекторами) -->
+            <div class="flex mx-auto justify-between mt-2 items-center max-w-screen-xl">
+                <button class="pricing-prev group relative flex items-center text-zinc-800 transition-opacity hover:opacity-80">
+                    <svg width="60" height="12" viewBox="0 0 60 12" fill="none" class="overflow-visible">
+                        <path d="M6 1L1 6L6 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="2" y1="6" x2="30" y2="6" stroke="currentColor" stroke-width="1.5" class="transition-transform duration-300 origin-left group-hover:scale-x-[1.5]" />
+                    </svg>
+                </button>
+                <button class="pricing-next group relative flex items-center text-zinc-800 transition-opacity hover:opacity-80">
+                    <svg width="60" height="12" viewBox="0 0 60 12" fill="none" class="overflow-visible">
+                        <line x1="30" y1="6" x2="58" y2="6" stroke="currentColor" stroke-width="1.5" class="transition-transform duration-300 origin-right group-hover:scale-x-[1.5]" />
+                        <path d="M54 1L59 6L54 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="line-up-selection" class="relative z-10 pt-16 text-zinc-50 bg-zinc-100 bg-center bg-no-repeat reveal-fade">
+
+    <div class="container mx-auto px-4 max-w-screen-2xl">
+        <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-light tracking-tight text-zinc-800 lg:text-5xl">
+                    Выбор состава
+                </h2>
+            </div>
+            <div class="md:w-1/2 flex flex-col items-start md:items-end gap-6">
+                <p class="text-zinc-800 text-lg md:text-right font-extralight leading-relaxed">
+                    Получить больше информации по вариантам инструментальных и инструментально-вокальных составов под формат Вашего события
+                </p>
+                <a href="{% url 'content:contacts' %}" class="group inline-flex items-center px-8 py-3 text-sm font-medium rounded-full border bg-zinc-800 border-zinc-800/30 text-zinc-50 transition-all duration-300 hover:bg-pink-800 hover:text-zinc-50 active:scale-95 uppercase tracking-widest">
+                    Составы
+                    <span class="js-scroll-arrow ml-2 inline-block">
+                        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current">
+                            <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2813 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z"></path>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-4 max-w-[1920px] overflow-x-hidden reveal">
+        <div class="swiper mx-auto creativeSwiper">
+            <!-- Добавлено items-center для центровки слайдов по вертикали, если они разной высоты -->
+            <div class="swiper-wrapper items-center">
+                {% for line_up in line_up_list %}
+                    <div class="swiper-slide flex justify-center mt-24">
+                        <div data-lineup-id="{{ line_up.id }}"
+                             class="pricing-card group relative flex flex-col w-full max-w-[380px] py-10 border border-zinc-300 transition-all duration-500 opacity-60 hover:opacity-100 hover:border-zinc-600 hover:-translate-y-4 bg-white">
+
+                            <!-- Бейдж сверху (динамический) -->
+                            <div class="absolute inset-x-0 -top-3 flex justify-center">
+                                <span class="badge-status flex h-6 items-center justify-center bg-zinc-300 px-4 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-zinc-800 transition-colors duration-500 group-hover:bg-zinc-600 group-hover:text-zinc-50">
+                                    {% if line_up.is_vocal %}+ вокал{% else %}Инструментальный{% endif %}
+                                </span>
+                            </div>
+
+                            <div class="mb-4">
+                                <!-- Заголовок как в "Премиум" -->
+                                <div class="mb-2 text-center text-2xl font-light uppercase tracking-tight text-zinc-800">
+                                    {{ line_up.title }}
+                                </div>
+
+                                <!-- Изображение: уменьшено и стилизовано -->
+                                <div class="relative aspect-video overflow-hidden mb-2 bg-zinc-900">
+                                    <img src="{{ line_up.image.url }}" alt="{{ line_up.title }}"
+                                         class="object-cover w-full h-full grayscale brightness-50 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100">
+                                </div>
+
+                                <p class="mb-1 px-2 text-center text-zinc-500 font-extralight text-sm leading-relaxed min-h-[3rem]">
+                                    {{ line_up.description|truncatechars:120 }}
+                                </p>
+
+                            </div>
+
+                            <!-- Блок цены и кнопки -->
+                            <div class="mt-auto flex flex-col gap-3 px-8">
+                                <div class="flex items-baseline justify-center gap-2">
+                                    <span id="price-display-{{ forloop.counter }}"
+                                          class="text-3xl font-light text-zinc-800 transition-all duration-300"
+                                          data-price="{% if line_up.is_vocal %}от {% endif %}{{ line_up.price }}"
+                                          data-premium="{% if line_up.is_vocal %}от {% endif %}{{ line_up.price_premium }}"
+                                          data-plus="{% if line_up.is_vocal %}от {% endif %}{{ line_up.price_plus }}">
+                                        {{ line_up.price }}
+                                    </span>
+                                    <span class="text-xs font-extralight uppercase tracking-widest text-zinc-600">руб.</span>
+                                </div>
+
+                                <button onclick="selectPlan(this)"
+                                        class="btn-select group/btn inline-flex items-center justify-center px-8 py-3 text-[9px] font-medium rounded-full border border-zinc-400 text-zinc-400 transition-all duration-500 hover:border-zinc-800 hover:bg-zinc-600 hover:text-zinc-50 active:scale-95 uppercase tracking-[0.2em]">
+                                    <span>Выбрать состав</span>
+                                    <svg class="ml-2 transform transition-transform duration-300 group-hover/btn:translate-x-1" width="16" height="16" viewBox="0 0 20 20" fill="none">
+                                        <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2813 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+            <!-- Стрелки -->
+            <div class="flex mx-auto justify-between mt-12 items-center max-w-screen-xl">
+                <!-- Кнопка НАЗАД (Указатель слева, хвост растет ВПРАВО) -->
+                <button class="swiper-prev group relative flex items-center text-zinc-800 transition-opacity hover:opacity-80">
+                    <svg width="60" height="12" viewBox="0 0 60 12" fill="none" xmlns="http://www.w3.org" class="overflow-visible">
+                        <!-- НАКОНЕЧНИК (НЕПОДВИЖНЫЙ) -->
+                        <path d="M6 1L1 6L6 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- ЛИНИЯ (ХВОСТ) - растет ВПРАВО за счет origin-left -->
+                        <line x1="2" y1="6" x2="30" y2="6" stroke="currentColor" stroke-width="1.5"
+                              class="transition-transform duration-300 ease-in-out origin-left group-hover:scale-x-[1.5]" />
+                    </svg>
+                </button>
+                <!-- Кнопка ВПЕРЕД (Указатель справа, хвост растет ВЛЕВО) -->
+                <button class="swiper-next group relative flex items-center text-zinc-800 transition-opacity hover:opacity-80">
+                    <svg width="60" height="12" viewBox="0 0 60 12" fill="none" xmlns="http://www.w3.org" class="overflow-visible">
+                        <!-- ЛИНИЯ (ХВОСТ) - растет ВЛЕВО за счет origin-right -->
+                        <line x1="30" y1="6" x2="58" y2="6" stroke="currentColor" stroke-width="1.5"
+                              class="transition-transform duration-300 ease-in-out origin-right group-hover:scale-x-[1.5]" />
+                        <!-- НАКОНЕЧНИК (НЕПОДВИЖНЫЙ) -->
+                        <path d="M54 1L59 6L54 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>

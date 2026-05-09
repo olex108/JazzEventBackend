@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Фото{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <!-- Заголовок секции -->
+    <div class="bg-zinc-50 pt-18 overflow-hidden reveal">
+        <div class="mx-auto max-w-screen-2xl px-4">
+
+            <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-light tracking-tight text-zinc-800 lg:text-5xl">
+                        Наши мероприятия
+                    </h2>
+                </div>
+                <div class="md:w-1/2 flex flex-col items-start md:items-end gap-6">
+                    <p class="text-zinc-600 text-lg md:text-right font-extralight leading-relaxed">
+                        Большой опыт организации и выступлений на различных площадках города. Сопровождение мероприятий любого уровня
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <a href="https://www.instagram.com/jazz_event/" target="_blank" class="text-zinc-600 hover:text-pink-800 transition-colors duration-300">
+                            <i class="fa-brands fa-instagram text-4xl"></i>
+                        </a>
+                        <a href="https://vk.com/jazzevent.russia" target="_blank" class="text-zinc-600 hover:text-pink-800 transition-colors duration-300">
+                            <i class="fa-brands fa-vk text-4xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СЕКЦИЯ С ФОТО -->
+    <section class="relative z-50 text-zinc-600 bg-zinc-50 bg-center bg-no-repeat"
+             style="background-image: url('ВАШ_ПУТЬ_К_ИЗОБРАЖЕНИЮ_ИЛИ_{{ django_var }}');"
+    >
+        <!-- Затемнение фона -->
+        <div class="absolute top-0 left-0 -z-10 h-full w-full"></div>
+
+        {% include "content/includes/photo_slider.html" with photo_list=photo_list %}
+
+    </section>
+
+    {% include 'content/includes/photo_collage_section.html' %}
+
+{% endblock %}
+
+{% block scripts %}
+    {% load django_vite %}
+    <!-- Подключаем только ОДИН раз -->
+    {% vite_asset 'src/video_page.js' %}
+{% endblock %}

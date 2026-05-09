@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+    <!-- СЕКЦИЯ СО СЛАЙДЕРОМ -->
+    {% include 'content/includes/slider_line_up_section.html' %}
+
+    {% include 'content/includes/event_main_video_section.html' %}
+
+    {% include 'content/includes/steps_section.html' %}
+
+    {% include 'content/includes/advantages_insert.html' %}
+
+    {% include 'content/includes/success_stories_slider.html' %}
+
+{% endblock %}

@@ -1,0 +1,94 @@
+<!-- footer.html -->
+
+{% load static %}
+
+<footer class="bg-zinc-800 text-zinc-300 pt-20 pb-10 border-t border-zinc-700/50 reveal-fade">
+    <div class="container mx-auto px-4 max-w-screen-2xl">
+
+        <!-- Основная сетка футера -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 px-6">
+
+            <!-- Колонка 1: Логотип и краткое описание -->
+            <div class="flex flex-col gap-6">
+                <a href="{% url 'content:home' %}" class="flex items-center text-2xl tracking-widest uppercase">
+                    <img src="{% static 'image/navbar/jazz_event.png' %}" class="w-16 h-16 object-contain mr-3" alt="JAZZ Event">
+                    <span class="font-bold">JAZZ</span><span class="font-light text-zinc-200/90">Event</span>
+                </a>
+                <div class="flex items-center gap-6 mb-2">
+                    <a href="https://www.instagram.com/jazz_event/" target="_blank" class="text-zinc-300 hover:text-pink-800 transition-colors duration-300">
+                        <i class="fa-brands fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://web.telegram.org/k/#@olesia_levkova" target="_blank" class="text-zinc-300 hover:text-pink-800 transition-colors duration-300">
+                        <i class="fa-brands fa-telegram text-2xl"></i>
+                    </a>
+                    <a href="https://vk.com/jazzevent.russia" target="_blank" class="text-zinc-300 hover:text-pink-800 transition-colors duration-300">
+                        <i class="fa-brands fa-vk text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Колонка 2: Навигация -->
+            <div class="footer-accordion border-b border-zinc-700/50 lg:border-none">
+                <button type="button" onclick="toggleFooterSection(this)" class="w-full flex items-center justify-between py-6 lg:py-0 lg:cursor-default group outline-none">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">Навигация</h4>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-zinc-600 transition-transform duration-300 lg:hidden"></i>
+                </button>
+                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:max-h-full lg:mt-8">
+                    <ul class="space-y-4 pb-6 lg:pb-0">
+                        <li><a href="{% url 'content:home' %}" class="text-sm font-light tracking-widest hover:text-pink-50 transition-colors uppercase">Главная</a></li>
+                        <li><a href="{% url 'content:price' %}" class="text-sm font-light tracking-widest hover:text-pink-50 transition-colors uppercase">Цены</a></li>
+                        <li><a href="{% url 'content:line_up' %}" class="text-sm font-light tracking-widest hover:text-pink-50 transition-colors uppercase">Составы</a></li>
+                        <li><a href="{% url 'content:contacts' %}" class="text-sm font-light tracking-widest hover:text-pink-50 transition-colors uppercase">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Колонка 3: Информация -->
+            <div class="footer-accordion border-b border-zinc-700/50 lg:border-none">
+                <button type="button" onclick="toggleFooterSection(this)" class="w-full flex items-center justify-between py-6 lg:py-0 lg:cursor-default group outline-none">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">Информация</h4>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-zinc-600 transition-transform duration-300 lg:hidden"></i>
+                </button>
+                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:max-h-full lg:mt-8">
+                    <ul class="space-y-4 pb-6 lg:pb-0">
+                        <li><a href="#" class="text-sm font-light tracking-widest hover:text-pink-50 transition-colors uppercase">Отзывы</a></li>
+                        <li><a href="#" class="text-sm font-light tracking-widest hover:text-pink-50 transition-colors uppercase">Вопросы и ответы</a></li>
+                        <li><a href="{% url 'content:events_list' %}" class="text-sm font-light tracking-widest hover:text-pink-50 transition-colors uppercase">Портфолио</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Колонка 4: Контакты -->
+            <div class="footer-accordion border-b border-zinc-700/50 lg:border-none">
+                <button type="button" onclick="toggleFooterSection(this)" class="w-full flex items-center justify-between py-6 lg:py-0 lg:cursor-default group outline-none">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">Связь</h4>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-zinc-600 transition-transform duration-300 lg:hidden"></i>
+                </button>
+                <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:max-h-full lg:mt-8">
+                    <div class="space-y-4 pb-6 lg:pb-0">
+                        <p class="text-sm font-light tracking-widest uppercase text-zinc-400">г. Санкт-Петербург</p>
+                        <a href="tel:+79119075400" class="block text-lg font-light tracking-widest hover:text-pink-50 transition-colors">+7 (911) 907-54-00</a>
+                        <a href="mailto:jazz_event@gmail.com" class="block text-s font-light tracking-widest text-zinc-500 hover:text-pink-50 transition-colors lowercase">jazz_event@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Нижняя панель: Юридические ссылки -->
+        <div class="pt-10 border-t border-zinc-600/30 flex flex-col md:flex-row justify-between items-center gap-6">
+
+            <div class="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-3">
+                <a href="{% url 'content:user_agree' %}" class="text-[9px] uppercase tracking-[0.2em] text-zinc-600 hover:text-pink-50 transition-colors">Персональные данные</a>
+                <a href="{% url 'content:policy' %}" class="text-[9px] uppercase tracking-[0.2em] text-zinc-600 hover:text-pink-50 transition-colors">Политика конфиденциальности</a>
+                <a href="{% url 'content:cookie' %}" class="text-[9px] uppercase tracking-[0.2em] text-zinc-600 hover:text-pink-50 transition-colors">Файлы cookie</a>
+                <a href="{% url 'content:legal-information' %}" class="text-[9px] uppercase tracking-[0.2em] text-zinc-600 hover:text-pink-50 transition-colors">Реквизиты</a>
+            </div>
+
+            <div class="text-[10px] uppercase tracking-[0.2em] text-zinc-700">
+                &copy; 2026 JAZZ EVENT. Все права защищены.
+            </div>
+
+        </div>
+    </div>
+</footer>

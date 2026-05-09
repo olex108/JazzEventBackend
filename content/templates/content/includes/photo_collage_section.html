@@ -1,0 +1,66 @@
+<!-- "photo_collage_section.html" -->
+
+{% load static %}
+{% load django_vite %}
+{% vite_asset 'src/collage_slider.js' %}
+
+<!-- СЕКЦИЯ С КОЛЛАЖАМИ -->
+<div class="bg-pink-800 py-24 overflow-hidden reveal">
+
+    <div class="absolute top-0 left-0 -z-10 h-full w-full bg-black/40"></div>
+
+    <div class="mx-auto max-w-screen-2xl">
+        <!-- Слайдер с коллажами -->
+        <div class="collage-slider-container relative">
+            <div class="swiper collageSwiper overflow-visible">
+                <div class="swiper-wrapper">
+
+                    {% for event in events_for_collage %}
+                        <!-- Проверяем, что фото хватает для сетки (нужно 7 шт) -->
+                        {% with images=event.images.all %}
+                        {% if images.count >= 7 %}
+                        <div class="swiper-slide w-[320px] sm:w-[450px] h-auto">
+                            <div class="bg-white shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-700 hover:-translate-y-3 flex flex-col h-full border border-zinc-100">
+
+                                <!-- 1. Главное фото (Индекс 0) -->
+                                <div class="w-full aspect-[16/8] overflow-hidden">
+                                    <img src="{{ images.0.image.url }}" class="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700" alt="{{ event.title }}">
+                                </div>
+
+                                <!-- 2. Инфо-блок -->
+                                <div class="p-4">
+                                    <span class="text-[9px] lg:text-[11px] uppercase tracking-[0.2em] text-zinc-400 block min-h-[26px]">— {{ event.title }}</span>
+                                </div>
+
+                                <!-- 3. Сетка (Индексы 1-6) -->
+                                <div class="collage-grid-container p-1 gap-1 aspect-[4/3] bg-zinc-50/50">
+
+                                    <!-- Столбец 1 -->
+                                    <div class="grid grid-rows-[1.6fr_0.8fr] gap-1 h-full">
+                                        <div class="relative overflow-hidden"><img src="{{ images.1.image.url }}" class="absolute inset-0 w-full h-full object-cover"></div>
+                                        <div class="relative overflow-hidden"><img src="{{ images.2.image.url }}" class="absolute inset-0 w-full h-full object-cover"></div>
+                                    </div>
+
+                                    <!-- Столбец 2 (Средний) -->
+                                    <div class="grid grid-rows-[0.8fr_1.6fr] gap-1 h-full">
+                                        <div class="relative overflow-hidden"><img src="{{ images.3.image.url }}" class="absolute inset-0 w-full h-full object-cover"></div>
+                                        <div class="relative overflow-hidden"><img src="{{ images.4.image.url }}" class="absolute inset-0 w-full h-full object-cover"></div>
+                                    </div>
+
+                                    <!-- Столбец 3 -->
+                                    <div class="grid grid-rows-[1.6fr_0.8fr] gap-1 h-full">
+                                        <div class="relative overflow-hidden"><img src="{{ images.5.image.url }}" class="absolute inset-0 w-full h-full object-cover"></div>
+                                        <div class="relative overflow-hidden"><img src="{{ images.6.image.url }}" class="absolute inset-0 w-full h-full object-cover"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<!-- navbar.html -->
+
+{% load static %}
+
+<!-- Шапка: по умолчанию прозрачная, буквы белые -->
+<header id="main-nav" class="fixed top-0 inset-x-0 z-80 transition-all duration-500 text-zinc-300 bg-transparent">
+    <div class="container mx-auto w-full px-4 py-0 flex items-center justify-between max-w-screen-2xl">
+
+        <!-- Логотип: заменен на более музыкальный -->
+        <a href="{% url 'content:home' %}" class="flex items-center text-2xl tracking-widest uppercase">
+            <!-- Свое изображение -->
+            <img src="{% static 'image/navbar/jazz_event.png' %}"
+                 class="w-20 h-20 object-contain mr-3"
+                 alt="JAZZ Event">
+
+            <span class="font-bold">JAZZ</span><span class="font-light text-zinc-200/90">Event</span>
+        </a>
+
+        <!-- Навигация для десктопа -->
+        <nav class="hidden lg:flex items-center space-x-10">
+            <a href="{% url 'content:home' %}" class="text-sm font-light tracking-widest uppercase hover:text-zinc-50 transition-colors">Главная</a>
+
+            <!-- Всплывающее Портфолио -->
+            <div class="relative group h-full py-2">
+                <button class="flex items-center text-sm font-light tracking-widest uppercase hover:text-zinc-50 transition-colors cursor-default">
+                    Портфолио
+                    <i class="fa-solid fa-chevron-down text-[10px] ml-2 transform group-hover:rotate-180 transition-transform"></i>
+                </button>
+                <!-- Выпадающий список -->
+                <div class="absolute top-full left-1/2 -translate-x-1/2 z-[100] min-w-[240px] pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    <div class="bg-zinc-800 border border-zinc-50/10 p-2 shadow-2xl">
+                        <a href="{% url 'content:events_list' %}" class="block px-4 py-3 text-sm font-light hover:bg-zinc-50/5 hover:text-zinc-50 transition-all">Мероприятия</a>
+                        <a href="{% url 'content:video_list' %}" class="block px-4 py-3 text-sm font-light hover:bg-zinc-50/5 hover:text-zinc-50 transition-all">Видео</a>
+                        <a href="{% url 'content:photo_list' %}" class="block px-4 py-3 text-sm font-light hover:bg-zinc-50/5 hover:text-zinc-50 transition-all">Фото</a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{% url 'content:price' %}" class="text-sm font-light tracking-widest uppercase hover:text-zinc-50 transition-colors">Цены</a>
+            <a href="{% url 'content:line_up' %}" class="text-sm font-light tracking-widest uppercase hover:text-zinc-50 transition-colors">Составы</a>
+            <a href="{% url 'content:contacts' %}" class="text-sm font-light tracking-widest uppercase hover:text-zinc-50 transition-colors">Контакты</a>
+        </nav>
+
+        <!-- Кнопка позвонить: овальная, в стиле проекта -->
+        <div class="hidden lg:flex items-center">
+            <a href="tel:+1234567890" class="inline-flex items-center px-8 py-2.5 text-sm font-medium tracking-widest uppercase bg-pink-900 border-zinc-50/30 rounded-full hover:bg-zinc-50 hover:text-zinc-800 transition-all duration-300">
+                <i class="fa-solid fa-phone-volume mr-2 text-xs"></i>
+                Связаться
+            </a>
+        </div>
+
+        <!-- Кнопка мобильного меню -->
+        <div class="lg:hidden">
+            <button id="mobile-menu-button" class="p-2 transition-colors">
+                <i class="fa-solid fa-bars-staggered text-2xl"></i>
+            </button>
+        </div>
+    </div>
+
+</header>
+
+<!-- Мобильное меню: темный фон -->
+<div id="mobile-menu" class="hidden fixed inset-0 text-zinc-200 bg-zinc-800/95 backdrop-blur-xl z-100 overflow-y-auto">
+    <div class="flex justify-end p-8">
+        <button id="close-menu" class="text-zinc-200 hover:text-zinc-50 text-3xl">&times;</button>
+    </div>
+    <nav class="flex flex-col items-center space-y-5 p-10">
+        <a href="{% url 'content:home' %}" class="text-xl hover:text-zinc-50 font-light tracking-widest uppercase">Главная</a>
+        <div class="flex flex-col items-center space-y-3 pt-4 border-t border-white/10 w-full">
+            <span class="text-gray-500 text-xs tracking-widest uppercase">Портфолио</span>
+            <a href="{% url 'content:events_list' %}" class="text-lg hover:text-zinc-50 font-light">Мероприятия</a>
+            <a href="{% url 'content:video_list' %}" class="text-lg hover:text-zinc-50 font-light">Видео</a>
+            <a href="{% url 'content:photo_list' %}" class="text-lg hover:text-zinc-50 font-light">Фото</a>
+        </div>
+
+        <a href="{% url 'content:price' %}" class="text-xl hover:text-zinc-50 font-light tracking-widest uppercase">Цены</a>
+        <a href="{% url 'content:line_up' %}" class="text-xl hover:text-zinc-50 font-light tracking-widest uppercase">Составы</a>
+        <a href="{% url 'content:contacts' %}" class="text-xl hover:text-zinc-50 font-light tracking-widest uppercase">Контакты</a>
+        <a href="tel:+1234567890"
+           class="w-full text-center py-4 border border-white/30 rounded-full text-white uppercase tracking-widest font-medium
+                  hover:bg-zinc-50 hover:text-zinc-800
+                  transition-all duration-300 ease-in-out"> <!-- Увеличили время и добавили плавность -->
+            <i class="fa-solid fa-phone-volume mr-2 text-xs"></i>
+            Позвонить
+        </a>
+    </nav>
+</div>

@@ -1,0 +1,22 @@
+<!-- contact_page.html -->
+
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+{% load django_vite %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block header %}
+
+    {% include 'content/includes/contacts_form.html' %}
+
+{% endblock %}
+
+{% block content %}
+
+    {% include 'content/includes/contacts_section.html' %}
+
+    {% include 'content/includes/steps_section.html' %}
+
+{% endblock %}

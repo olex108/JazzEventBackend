@@ -1,0 +1,143 @@
+<!-- filter_section.html -->
+
+{% load django_vite %}
+{% vite_asset 'src/filters.js' %}
+
+<!-- СЕКЦИЯ С ПОИСКОМ -->
+<div id="filter_section" class="bg-zinc-50">
+
+    <!-- Кнопка "Наверх к фильтрам" -->
+    <button id="scrollToFilter"
+        class="fixed bottom-8 right-8 z-50 translate-y-40 opacity-0 pointer-events-none
+               flex items-center justify-between px-8 py-4
+               w-auto rounded-full border border-zinc-800 bg-zinc-50/95 backdrop-blur-md
+               text-zinc-800 transition-all duration-700
+               opacity-0 hover:opacity-100 hover:bg-zinc-800 hover:text-zinc-50
+               active:scale-95 uppercase shadow-2xl group">
+
+        <span id="filterBtnText" class="text-[12px] leading-none tracking-[0.1em] font-medium text-left pr-6 whitespace-nowrap transition-opacity duration-300">
+            Фильтр
+        </span>
+
+        <span class="flex-shrink-0 transform -rotate-90 transition-transform duration-300 group-hover:-translate-y-1">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org" class="fill-current">
+                <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2813 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z"></path>
+            </svg>
+        </span>
+    </button>
+
+    <div class="mx-auto py-16 max-w-screen-2xl px-4">
+        <!-- Заголовок слайдера -->
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-light tracking-tight text-zinc-800 lg:text-5xl">
+                    Наши выступления
+                </h2>
+            </div>
+            <div class="md:w-1/2 flex flex-col items-start md:items-end gap-6">
+                <p class="text-zinc-800 text-lg md:text-right font-extralight leading-relaxed">
+                    Выберите подходящий формат вашего мероприятия из нашего широкого спектра эксклюзивных предложений.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex pt-6 flex-col md:flex-row md:items-end md:justify-between gap-8">
+
+            <div class="filter-form w-full flex justify-end">
+                <form method="get" class="filter-form">
+                    <div class="flex flex-wrap items-center justify-end md:justify-end gap-3 w-full">
+
+                        <!-- 1. Одиночный выбор -->
+                        <div class="relative min-w-[160px] z-40" id="singleSelectContainer">
+                            <!-- Кнопка-триггер -->
+                            <div onclick="toggleSingleSelect(event)" id="singleSelectBtn" class="h-[42px] cursor-pointer border rounded-full px-5 py-2 bg-zinc-100 flex justify-between items-center transition-all">
+                                <span id="singleSelectedLabel" class="text-zinc-500 font-extralight truncate">Составы</span>
+                                <i class="fa-solid fa-chevron-down text-[10px] ml-3 text-zinc-800 flex-shrink-0 transition-colors duration-300"></i>
+                            </div>
+                            <!-- Выпадающий список -->
+                            <div id="singleSelectOptions" class="absolute z-50 mt-2 w-full bg-zinc-100 border border-zinc-100 rounded-2xl shadow-xl hidden p-2">
+                                <div class="flex flex-col gap-0">
+                                    {% for choice in filter.form.line_up.field.choices %}
+                                        <label class="flex items-center px-4 py-2 hover:bg-zinc-50 rounded-xl cursor-pointer group">
+                                            <input type="radio"
+                                                   name="line_up"
+                                                   value="{{ choice.0 }}"
+                                                   class="hidden"
+                                                   {# Передаем текст и само значение choice.0 #}
+                                                   onchange="updateSingleLabel('{{ choice.1 }}', '{{ choice.0 }}'); toggleSingleSelect();"
+                                                   {% if filter.form.line_up.value == choice.0|stringformat:"s" %}checked{% endif %}>
+                                            <span class="text-sm font-light text-zinc-500 transition-all duration-100 group-hover:text-pink-800 hover:[text-shadow:_0.5px_0_0_currentColor]">
+                                                {{ choice.1 }}
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Множественный выбор -->
+                        <div class="relative min-w-[160px] z-40" id="multiSelectContainer">
+                            <!-- Кнопка-триггер -->
+                            <div onclick="toggleMultiSelect(event)" id="multiSelectBtn" class="cursor-pointer border rounded-full px-4 py-2 bg-zinc-100 flex justify-between items-center transition-all">
+                                <span id="selectedLabel" class="text-zinc-500 font-extralight">Инструменты</span>
+                                <i class="fa-solid fa-chevron-down text-xs ml-2 text-gray-800 transition-colors duration-300"></i>
+                            </div>
+
+                            <!-- Выпадающий список (тот самый #multiSelectOptions) -->
+                            <div id="multiSelectOptions" class="absolute z-50 mt-2 w-full bg-zinc-100 border border-zinc-100 rounded-2xl shadow-2xl hidden p-2">
+                                <div class="flex flex-col gap-1">
+                                    {% for choice in filter.form.instruments.field.choices %}
+                                        <label class="group flex items-center gap-3 cursor-pointer hover:bg-white px-3 py-2 rounded-xl transition-colors duration-200">
+                                            <!-- Чекбокс -->
+                                            <input type="checkbox"
+                                                   name="instruments"
+                                                   value="{{ choice.0 }}"
+                                                   onchange="updateLabel()"
+                                                   {% if choice.0|stringformat:"s" in filter.form.instruments.value %}checked{% endif %}
+                                                   class="w-4 h-4 rounded border-zinc-300 text-pink-800 focus:ring-offset-0 focus:ring-pink-800 transition-all cursor-pointer">
+
+                                            <!-- Текст (реагирует и на hover группы, и на состояние checked соседа) -->
+                                            <span class="text-sm font-light text-zinc-500 transition-all duration-300
+                                                         group-hover:text-pink-800 group-hover:[text-shadow:_0.5px_0_0_currentColor]
+                                                         peer-checked:text-pink-800 peer-checked:font-medium">
+                                                {{ choice.1 }}
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Булево поле (Вокал) -->
+                        <div class="relative flex items-center h-full">
+                            <label class="flex items-center cursor-pointer group">
+                                <input type="checkbox" name="is_vocal" value="true" class="peer hidden" {% if filter.form.is_vocal.value %}checked{% endif %}>
+
+                                <!-- Добавляем peer-checked здесь для всего контейнера -->
+                                <div class="h-[42px] flex items-center gap-2 px-5 py-2 border rounded-full bg-zinc-100 transition-all duration-300
+                                            peer-checked:bg-pink-800 peer-checked:border-pink-800
+                                            peer-checked:text-zinc-50"> <!-- Это окрасит и текст внутри -->
+
+                                    <span class="text-sm select-none transition-all duration-300 font-extralight
+                                                 peer-checked:font-medium text-inherit"> <!-- text-inherit наследует белый цвет от дива -->
+                                        Вокал
+                                    </span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn inline-flex items-center px-8 py-3 text-sm font-medium rounded-full border bg-zinc-800 border-zinc-800/30 text-zinc-50 transition-all duration-300 hover:bg-pink-800 hover:text-zinc-50 active:scale-95 uppercase tracking-widest">
+                            Подобрать
+                            <span class="js-scroll-arrow ml-2 inline-block">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current">
+                                    <path d="M18 9.5L11.5312 2.9375C11.25 2.65625 10.8125 2.65625 10.5312 2.9375C10.25 3.21875 10.25 3.65625 10.5312 3.9375L15.7812 9.28125H2.5C2.125 9.28125 1.8125 9.59375 1.8125 9.96875C1.8125 10.3437 2.125 10.6875 2.5 10.6875H15.8437L10.5312 16.0938C10.25 16.375 10.25 16.8125 10.5312 17.0938C10.6562 17.2188 10.8437 17.2813 11.0312 17.2813C11.2187 17.2813 11.4062 17.2188 11.5312 17.0625L18 10.5C18.2812 10.2187 18.2812 9.78125 18 9.5Z"></path>
+                                </svg>
+                            </span>
+                        </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
